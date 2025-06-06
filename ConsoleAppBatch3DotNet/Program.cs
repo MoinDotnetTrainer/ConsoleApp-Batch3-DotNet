@@ -22,8 +22,17 @@ namespace ConsoleAppBatch3DotNet
              */
 
 
-            DataTypes obj = new DataTypes();
-            obj.Test();
+            // DataTypes obj = new DataTypes();
+            // obj.Test();
+
+            //  Readline obj = new Readline();
+            // obj.Test();
+
+            // ArraysExample obj = new ArraysExample();
+            //  obj.Test();
+
+            Control c = new Control();
+            c.Test();
         }
     }
 }
