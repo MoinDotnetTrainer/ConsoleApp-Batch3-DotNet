@@ -83,8 +83,27 @@ namespace ConsoleAppBatch3DotNet
             // obj.M1();
 
 
-            GP gp = new GP();
-            gp.Add();
+            // GP gp = new GP();
+            //gp.Add();
+
+            // ConstrChaining obj = new ConstrChaining("hi");
+
+            //TestChild obj = new TestChild();
+            //obj.Add(12,23);
+            //obj.Sub();
+
+            //RBI obj = new RBI();
+            //obj.Deposite();
+            //obj.WIthdraw();
+
+            //Axis axis = new Axis();
+            //axis.MyDeposite();
+            //axis.MyWithdraw();
+
+
+
+            ExceptionHandling obj = new ExceptionHandling();
+            obj.Div();
 
         }
     }
