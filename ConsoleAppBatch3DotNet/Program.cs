@@ -1,8 +1,9 @@
 ﻿using System;
+using ClassLibrary1;
 
 namespace ConsoleAppBatch3DotNet
 {
-    internal class Program 
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -102,9 +103,71 @@ namespace ConsoleAppBatch3DotNet
 
 
 
-            ExceptionHandling obj = new ExceptionHandling();
-            obj.Div();
+            //   ExceptionHandling obj = new ExceptionHandling();
+            //  obj.Div();
 
+            //Emp obj = new Emp();
+            //obj.AllEMpData();
+            //obj.AllEmpSal();
+
+            //ProjectData obj1 = new ProjectData();
+            //obj1.Sampel();
+
+            //Refkeyword obj = new Refkeyword();
+            // obj.Exe();
+
+
+            //try
+            //{
+            //    Prop obj = new Prop();
+            //    obj.x_ = 45;
+            //    obj.y_ = 45;
+            //    obj.Add();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            //PropforArray obj = new PropforArray();
+            //obj[0] = 22;
+            //obj[1] = 33;
+            //obj[2] = 44;
+            //Console.WriteLine(obj[0]);
+
+            /*Delegates d = new Delegates();
+
+
+            Call1 c1 = new Call1(d.Add);
+            c1.Invoke();
+            Call1 c2 = new Call1(d.Sub);
+            c2.Invoke();
+
+            Call2 c3 = new Call2(Delegates.Mul);
+            c3 += new Call2(Delegates.Div);
+            c3.Invoke(12, 2);
+
+            // single cast and Multi cast
+            */
+
+            Point p = new Point(Annomous.Add);
+            var res = p.Invoke(12, 2);
+            Console.WriteLine(res);
+
+            Point p1 = delegate (int x, int y) // annomous
+            {
+                return x + y;
+            };
+            int res1 = p1.Invoke(12, 2);
+            Console.WriteLine(res1);
+
+            Point p3 = (x, y) =>
+            {
+                return x + y;
+            };
+            int res3 = p3.Invoke(12, 2);
+            Console.WriteLine(res3);
         }
     }
 }
