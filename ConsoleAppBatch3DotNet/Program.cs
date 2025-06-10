@@ -151,7 +151,7 @@ namespace ConsoleAppBatch3DotNet
             // single cast and Multi cast
             */
 
-            Point p = new Point(Annomous.Add);
+            /*Point p = new Point(Annomous.Add);
             var res = p.Invoke(12, 2);
             Console.WriteLine(res);
 
@@ -168,6 +168,30 @@ namespace ConsoleAppBatch3DotNet
             };
             int res3 = p3.Invoke(12, 2);
             Console.WriteLine(res3);
+            */
+
+            /* Generics obj = new Generics();
+             obj.M1<int,string>(12,"test");
+             obj.M1<float, bool>(23.34f,true);
+             obj.M1<double, char>(23.34,'C');
+
+
+             GenClass.M1<int>(23);
+
+
+
+             GenericClass<int, int> obj1 = new GenericClass<int, int>();
+             obj1.M1(12,243);
+           //obj1.M2(123,"test");
+            */
+
+
+            // CollectionsExample obj = new CollectionsExample();
+            // obj.Arraylist();
+
+            ISAS.StringMethods();
+
+
         }
     }
 }
