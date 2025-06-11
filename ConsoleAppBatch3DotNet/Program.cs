@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using ClassLibrary1;
 
 namespace ConsoleAppBatch3DotNet
@@ -136,19 +137,19 @@ namespace ConsoleAppBatch3DotNet
             //obj[2] = 44;
             //Console.WriteLine(obj[0]);
 
-            /*Delegates d = new Delegates();
+            /* Delegates d = new Delegates();
 
 
-            Call1 c1 = new Call1(d.Add);
-            c1.Invoke();
-            Call1 c2 = new Call1(d.Sub);
-            c2.Invoke();
+             Call1 c1 = new Call1(d.Add);
+             c1.Invoke();
+             Call1 c2 = new Call1(d.Sub);
+             c2.Invoke();
 
-            Call2 c3 = new Call2(Delegates.Mul);
-            c3 += new Call2(Delegates.Div);
-            c3.Invoke(12, 2);
+             Call2 c3 = new Call2(Delegates.Mul);
+             c3 += new Call2(Delegates.Div);
+             c3.Invoke(12, 2);
 
-            // single cast and Multi cast
+             // single cast and Multi cast
             */
 
             /*Point p = new Point(Annomous.Add);
@@ -189,9 +190,49 @@ namespace ConsoleAppBatch3DotNet
             // CollectionsExample obj = new CollectionsExample();
             // obj.Arraylist();
 
-            ISAS.StringMethods();
+            //   ISAS.StringMethods();
+
+            /* ClassDelegate d = new ClassDelegate();
 
 
+             CallT1 t1 = new CallT1(d.T1);
+             t1.Invoke();
+
+             CallT2 t2 = new CallT2(d.T2);
+             t2.Invoke(12,2);
+            */
+
+            /* Hashtable students = new Hashtable();
+
+             students.Add(1, "Alice");
+             students.Add(2, "Bob");
+             students.Add(3, "test");
+
+             foreach (DictionaryEntry student in students)
+             {
+                 Console.WriteLine($"ID: {student.Key}, Name: {student.Value}");
+             }
+
+             // Access by key (requires casting if needed)
+             Console.WriteLine(students[1]);
+
+             */
+
+            /* MultiTasking obj = new MultiTasking();
+             Thread t1= new Thread(obj.M1);
+             Thread t2 = new Thread(obj.M2);
+             t1.Start();
+             t2.Start();
+            */
+
+             WordCount wc= new WordCount();
+            //  wc.Call();
+
+            Task t = new Task(wc.Call1);
+            t.Start();
+            t.Wait();
+            Console.ReadLine();
+                
         }
     }
 }
