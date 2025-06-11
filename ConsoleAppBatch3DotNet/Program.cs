@@ -225,14 +225,20 @@ namespace ConsoleAppBatch3DotNet
              t2.Start();
             */
 
-             WordCount wc= new WordCount();
+           //  WordCount wc= new WordCount();
             //  wc.Call();
 
-            Task t = new Task(wc.Call1);
+           /* Task t = new Task(wc.Call1);
             t.Start();
             t.Wait();
             Console.ReadLine();
-                
+           */
+
+            LINQExcamples obj= new  LINQExcamples();
+            obj.Test2();
+
+
+
         }
     }
 }
