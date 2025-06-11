@@ -6,7 +6,39 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppBatch3DotNet
 {
+    class Students
+    {
+        public int ID { get; set; }
+        public string? Name { get; set; }
+        public string? Gender { get; set; }
+        public string? Branch { get; set; }
+        public int Age { get; set; }
+    }
 
+    public class Student
+    {
+        public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Branch { get; set; }
+        public static List<Student> GetAllStudents()
+        {
+            List<Student> listStudents = new List<Student>()
+            {
+                new Student{ID= 101,FirstName = "Preety",LastName = "Tiwary",Branch = "CSE"},
+                new Student{ID= 102,FirstName = "Preety",LastName = "Agrawal",Branch = "ETC"},
+                new Student{ID= 103,FirstName = "Priyanka",LastName = "Dewangan",Branch = "ETC"},
+                new Student{ID= 104,FirstName = "Hina",LastName = "Sharma",Branch = "ETC"},
+                new Student{ID= 105,FirstName = "Anugrag",LastName = "Mohanty",Branch = "CSE"},
+                new Student{ID= 106,FirstName = "Anurag",LastName = "Sharma",Branch = "CSE"},
+                new Student{ID= 107,FirstName = "Pranaya",LastName = "Kumar",Branch = "CSE"},
+                new Student{ID= 108,FirstName = "Manoj",LastName = "Kumar",Branch = "ETC"},
+                new Student{ID= 109,FirstName = "Pranaya",LastName = "Rout",Branch = "ETC"},
+                new Student{ID= 110,FirstName = "Saurav",LastName = "Rout",Branch = "CSE"}
+            };
+            return listStudents;
+        }
+    }
     class Batch3
     {
         public int ID { get; set; }
@@ -149,6 +181,154 @@ namespace ConsoleAppBatch3DotNet
 
             var login = (from s in list select s).All(x => x.Email == "Kamali" && x.Password == "123");
             Console.WriteLine(login);
+        }
+
+        public void Test3()
+        {
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //    var res = (from s in numbers select s).ElementAt(21);
+            var res1 = (from s in numbers select s).ElementAtOrDefault(22);
+
+            var res2 = (from s in numbers select s).FirstOrDefault(x => x > 50);
+
+            // var res3 = (from s in numbers select s).Single(x => x >= 8);
+
+            List<int> numbers1 = new List<int>() { };
+
+
+            var resultQS = (from num in numbers1
+                            select num).DefaultIfEmpty();
+
+
+            foreach (var item in resultQS)
+            {
+                // Console.WriteLine(item);
+            }
+
+
+            List<int> takeexample = new List<int>() { 6, 23, 445, 56, 56, 7, 87, 87, 8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            var res = (from s in takeexample select s).SkipWhile(x => x >= 6);
+            foreach (var item in res)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        public void Test4()
+        {
+            List<int> intList = new List<int>() { 10, 45, 35, 29, 100, 69, 58, 50 };
+            var res = from s in intList orderby s descending select s;
+            foreach (var item in res)
+            {
+                //  Console.WriteLine(item);
+            }
+
+
+            var myres = from s in Student.GetAllStudents() orderby s.FirstName select s;
+
+
+
+            var MS = Student.GetAllStudents()
+                            .OrderBy(x => x.FirstName)
+                            .ThenBy(y => y.LastName)
+
+                            .ToList();
+            foreach (var item in MS)
+            {
+                Console.WriteLine($"Id  is {item.ID} , Name is {item.FirstName} , Lst Name is {item.LastName}, Branch is {item.Branch}");
+
+            }
+
+        }
+
+        public void Test5()
+        {
+            List<Students> students = new List<Students>()
+ {
+     new Students { ID = 1001, Name = "Preety", Gender = "Female", Branch = "CSE", Age = 20 },
+     new Students { ID = 1002, Name = "Snurag", Gender = "Male", Branch = "ETC", Age = 21  },
+     new Students { ID = 1003, Name = "Pranaya", Gender = "Male", Branch = "CSE", Age = 21  },
+     new Students { ID = 1004, Name = "Anurag", Gender = "Male", Branch = "CSE", Age = 20  },
+     new Students { ID = 1005, Name = "Hina", Gender = "Female", Branch = "ETC", Age = 25 },
+     new Students { ID = 1007, Name = "santosh", Gender = "Male", Branch = "CSE", Age = 22  },
+     new Students { ID = 1008, Name = "Tina", Gender = "Female", Branch = "CSE", Age = 20  },
+     new Students { ID = 1009, Name = "Celina", Gender = "Female", Branch = "ETC", Age = 26 },
+     new Students { ID = 1010, Name = "Sambit", Gender = "Male",Branch = "ETC", Age = 35 }
+
+ };
+
+            var m1 = from s in students where s.Age >= 25 select s;  //lazy
+
+            var m2 = (from s in students where s.Age >= 25 select s).Count();//immedit
+
+
+
+            foreach (var item in m1)  // 4 names
+            {
+                // Console.WriteLine($"Id  is {item.ID} , Name is {item.Name} , Gender is {item.Gender}, Branch is {item.Branch},Age is {item.Age}");
+            }
+
+            // Console.WriteLine(m2);  // count 3 
+
+
+
+            var res = from s in students group s by s.Age;  // lazy
+
+            var GroupByQS = (from std in students
+                             select std).ToLookup(x => x.Age);  // immediate
+
+
+            students.Add(new Students { ID = 1011, Name = "test", Gender = "Male", Branch = "ETC", Age = 40 });
+
+
+
+            Console.WriteLine("Group");
+            foreach (var item in res)
+            {
+                Console.WriteLine(item.Key);
+                foreach (var Data in item)
+                {
+                    Console.WriteLine($"Id  is {Data.ID} , Name is {Data.Name} , Gender is {Data.Gender}, Branch is {Data.Branch}");
+                }
+            }
+
+
+            Console.WriteLine("lookup");
+
+            foreach (var item in GroupByQS)
+            {
+                Console.WriteLine(item.Key);
+                foreach (var Data in item)
+                {
+                    Console.WriteLine($"Id  is {Data.ID} , Name is {Data.Name} , Gender is {Data.Gender}, Branch is {Data.Branch}");
+                }
+            }
+
+
+        }
+
+
+        public void Test6()
+        {
+
+
+            IEnumerable<Student> ienum = from std in Student.GetAllStudents()
+                                         where std.Branch == "CSE"
+                                         select std;
+
+
+            // select * from tblname where email="xyz@yahoo.com"  // 100 
+
+            //Linq Query to Fetch all students with Gender Male
+            IQueryable<Student> iquer = Student.GetAllStudents().AsQueryable()
+                                .Where(std => std.Branch == "CSE");
+
+
+            foreach (var item in iquer)
+            {
+                Console.Write(item.FirstName + " ");
+            }
         }
     }
 }

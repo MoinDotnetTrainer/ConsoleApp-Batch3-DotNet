@@ -235,7 +235,7 @@ namespace ConsoleAppBatch3DotNet
            */
 
             LINQExcamples obj= new  LINQExcamples();
-            obj.Test2();
+            obj.Test6();
 
 
 
